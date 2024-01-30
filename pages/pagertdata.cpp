@@ -134,8 +134,8 @@ PageRtData::PageRtData(QWidget *parent) :
     ui->tempPlot->legend->setFont(legendFont);
     ui->tempPlot->axisRect()->insetLayout()->setInsetAlignment(0, Qt::AlignRight|Qt::AlignBottom);
     ui->tempPlot->xAxis->setLabel("Seconds (s)");
-    ui->tempPlot->yAxis->setLabel("Temperature MOSFET (\u00B0C)");
-    ui->tempPlot->yAxis2->setLabel("Temperature Motor (\u00B0C)");
+    ui->tempPlot->yAxis->setLabel((const char*)u8"Temperature MOSFET (\u00B0C)");
+    ui->tempPlot->yAxis2->setLabel((const char*)u8"Temperature Motor (\u00B0C)");
 
     ui->rpmPlot->legend->setVisible(true);
     ui->rpmPlot->legend->setFont(legendFont);
