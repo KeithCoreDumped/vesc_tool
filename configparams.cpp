@@ -973,7 +973,7 @@ bool ConfigParams::deSerialize(VByteArray &vb)
         return false;
     }
 
-    for (int i = 0;i < mSerializeOrder.size();i++) {
+    for (int i = 0;i < mSerializeOrder.size(); i++) {
         setParamSerial(vb, mSerializeOrder.at(i));
     }
 

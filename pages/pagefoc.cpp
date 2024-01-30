@@ -65,6 +65,7 @@ void PageFoc::reloadParams()
         ui->filterTab->clearParams();
         ui->offsetTab->clearParams();
         ui->fwTab->clearParams();
+        ui->acTab->clearParams();
         ui->advancedTab->clearParams();
 
         ui->generalTab->addParamSubgroup(mVesc->mcConfig(), "foc", "general");
@@ -76,6 +77,7 @@ void PageFoc::reloadParams()
         ui->filterTab->addParamSubgroup(mVesc->mcConfig(), "foc", "filters");
         ui->offsetTab->addParamSubgroup(mVesc->mcConfig(), "foc", "offsets");
         ui->fwTab->addParamSubgroup(mVesc->mcConfig(), "foc", "field weakening");
+        ui->acTab->addParamSubgroup(mVesc->mcConfig(), "foc", "anticogging");
         ui->advancedTab->addParamSubgroup(mVesc->mcConfig(), "foc", "advanced");
     }
 }

@@ -483,6 +483,9 @@
     <ClCompile Include="widgets\vtextbrowser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="pages\pageanticogging.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="QCodeEditor\include\internal\LispHighlighter.hpp">

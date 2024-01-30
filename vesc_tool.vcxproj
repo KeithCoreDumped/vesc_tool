@@ -216,6 +216,7 @@
     </QtUic>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="pages\pageanticogging.cpp" />
     <ClCompile Include="QCodeEditor\src\internal\LispHighlighter.cpp" />
     <ClCompile Include="QCodeEditor\src\internal\QCXXHighlighter.cpp" />
     <ClCompile Include="QCodeEditor\src\internal\QCodeEditor.cpp" />
