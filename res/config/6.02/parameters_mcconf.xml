@@ -2710,7 +2710,7 @@ p, li { white-space: pre-wrap; }
             <vTx>7</vTx>
         </foc_fw_ramp_time>
         <foc_ac_enable>
-			<longName>Enable Anticogging</longName>
+            <longName>Enable Anticogging</longName>
             <type>5</type>
             <transmittable>1</transmittable>
             <description>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -2722,14 +2722,16 @@ p, li { white-space: pre-wrap; }
             <valInt>1</valInt>
         </foc_ac_enable>
         <foc_ac_threshold_erpm>
-			<longName>Threshold ERPM</longName>
+            <longName>Threshold ERPM</longName>
             <type>1</type>
             <transmittable>1</transmittable>
             <description>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Roboto'; ; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Use anticogging algorithm up until this ERPM.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</description>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Enable anticogging algorithm up until this ERPM.&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;At high speed, there would be delays in rotor's position data from absolute encoder(e.g. AS5047P), causing phase shift in compensation, which, in extreme cases, can resulting in self-excitation, with infinite increasing in motor speed.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</description>
             <cDefine>MCCONF_FOC_AC_THRESHOLD_ERPM</cDefine>
             <editorDecimalsDouble>0</editorDecimalsDouble>
             <editorScale>1</editorScale>
@@ -2744,7 +2746,7 @@ p, li { white-space: pre-wrap; }
             <vTx>9</vTx>
         </foc_ac_threshold_erpm>
         <foc_ac_remapping_k>
-			<longName>Remapping K</longName>
+            <longName>Remapping K</longName>
             <type>1</type>
             <transmittable>1</transmittable>
             <description>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -2766,14 +2768,14 @@ p, li { white-space: pre-wrap; }
             <vTx>9</vTx>
         </foc_ac_remapping_k>
         <foc_ac_remapping_b>
-			<longName>Remapping B</longName>
+            <longName>Remapping B</longName>
             <type>1</type>
             <transmittable>1</transmittable>
             <description>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Roboto'; ; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Coefficient b for remapping out = kx + b.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</description>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Coefficient b for remapping out = kx + b.  (Unit: Ampere)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</description>
             <cDefine>MCCONF_AC_REMAPPING_B</cDefine>
             <editorDecimalsDouble>5</editorDecimalsDouble>
             <editorScale>1</editorScale>
@@ -2787,6 +2789,22 @@ p, li { white-space: pre-wrap; }
             <suffix></suffix>
             <vTx>9</vTx>
         </foc_ac_remapping_b>
+        <foc_ac_dm_comp>
+            <longName>Enable Differential Mode Torque Compensation</longName>
+            <type>5</type>
+            <transmittable>1</transmittable>
+            <description>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Roboto'; ; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Torque Ripple can be classified into common mode and differential mode.&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Common mode torque is irrelevent with speed direction, and thus is easier to compensate. It is much higher in amplitude, so compensating common mode torque improves a lot of performance at low speed.&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Differential mode torque is, on the other hand, has it's direction opposite to the speed. It's mainly caused by firction of the motor, so it has much lower AC amplitude.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</description>
+            <cDefine>FOC_AC_DM_COMP</cDefine>
+            <valInt>0</valInt>
+        </foc_ac_dm_comp>
         <foc_speed_soure>
             <longName>Speed Tracker Position Source</longName>
             <type>4</type>
@@ -4529,10 +4547,6 @@ p, li { white-space: pre-wrap; }
         <ser>foc_fw_duty_start</ser>
         <ser>foc_fw_ramp_time</ser>
         <ser>foc_fw_q_current_factor</ser>
-        <ser>foc_ac_enable</ser>
-        <ser>foc_ac_threshold_erpm</ser>
-        <ser>foc_ac_remapping_k</ser>
-        <ser>foc_ac_remapping_b</ser>
         <ser>foc_speed_soure</ser>
         <ser>gpd_buffer_notify_left</ser>
         <ser>gpd_buffer_interpol</ser>
@@ -4598,6 +4612,11 @@ p, li { white-space: pre-wrap; }
         <ser>bms.soc_limit_start</ser>
         <ser>bms.soc_limit_end</ser>
         <ser>bms.fwd_can_mode</ser>
+        <ser>foc_ac_enable</ser>
+        <ser>foc_ac_threshold_erpm</ser>
+        <ser>foc_ac_remapping_k</ser>
+        <ser>foc_ac_remapping_b</ser>
+        <ser>foc_ac_dm_comp</ser>
     </SerOrder>
     <Grouping>
         <group>
@@ -4896,6 +4915,7 @@ p, li { white-space: pre-wrap; }
                     <param>foc_ac_threshold_erpm</param>
                     <param>foc_ac_remapping_k</param>
                     <param>foc_ac_remapping_b</param>
+                    <param>foc_ac_dm_comp</param>
                 </subgroupParams>
             </subgroup>
             <subgroup>

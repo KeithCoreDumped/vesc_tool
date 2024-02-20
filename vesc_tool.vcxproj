@@ -81,13 +81,21 @@
     <QtDeploy>true</QtDeploy>
     <QtDeployQmlDir>
     </QtDeployQmlDir>
-    <QtDeployFiles>-qmldir $(QtInstallDir)\qml</QtDeployFiles>
+    <QtDeployFiles>
+    </QtDeployFiles>
   </PropertyGroup>
   <PropertyGroup Label="QtDeploy" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <QtDeployQmlDir>
     </QtDeployQmlDir>
     <QtDeploy>true</QtDeploy>
-    <QtDeployFiles>-qmldir $(QtInstallDir)\qml</QtDeployFiles>
+    <QtDeployFiles>
+    </QtDeployFiles>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <VcpkgUseStatic>true</VcpkgUseStatic>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <VcpkgUseStatic>true</VcpkgUseStatic>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -106,9 +114,9 @@
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
-      <WarningLevel>Level4</WarningLevel>
+      <WarningLevel>Level2</WarningLevel>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
     </ClCompile>
     <Link>
@@ -169,9 +177,9 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
-      <WarningLevel>Level4</WarningLevel>
+      <WarningLevel>Level2</WarningLevel>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
     </ClCompile>
     <Link>
@@ -216,7 +224,7 @@
     </QtUic>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="pages\pageanticogging.cpp" />
+    <ClCompile Include="fftw3wrapper.cpp" />
     <ClCompile Include="QCodeEditor\src\internal\LispHighlighter.cpp" />
     <ClCompile Include="QCodeEditor\src\internal\QCXXHighlighter.cpp" />
     <ClCompile Include="QCodeEditor\src\internal\QCodeEditor.cpp" />
@@ -243,6 +251,7 @@
     <ClCompile Include="bleuart.cpp" />
     <ClCompile Include="bleuartdummy.cpp" />
     <ClCompile Include="boardsetupwindow.cpp" />
+    <ClCompile Include="widgets\calibrateanticogging.cpp" />
     <ClCompile Include="widgets\canlistitem.cpp" />
     <ClCompile Include="map\carinfo.cpp" />
     <ClCompile Include="codeloader.cpp" />
@@ -367,6 +376,7 @@
     <QtMoc Include="QCodeEditor\include\internal\QFramedTextAttribute.hpp" />
     <QtMoc Include="QCodeEditor\include\internal\QGLSLCompleter.hpp" />
     <QtMoc Include="QCodeEditor\include\internal\QGLSLHighlighter.hpp" />
+    <ClInclude Include="fftw3wrapper.h" />
     <ClInclude Include="QCodeEditor\include\internal\QHighlightBlockRule.hpp" />
     <ClInclude Include="QCodeEditor\include\internal\QHighlightRule.hpp" />
     <QtMoc Include="QCodeEditor\include\internal\QJSONHighlighter.hpp" />
@@ -420,6 +430,7 @@
     <ClInclude Include="heatshrink\heatshrinkif.h" />
     <QtMoc Include="widgets\helpdialog.h" />
     <ClInclude Include="hexfile.h" />
+    <QtMoc Include="widgets\calibrateanticogging.h" />
     <ClInclude Include="widgets\historylineedit.h" />
     <QtMoc Include="widgets\imagewidget.h" />
     <QtMoc Include="display_tool\imagewidgetdisp.h" />
@@ -532,6 +543,7 @@
     <QtUic Include="widgets\adcmap.ui" />
     <QtUic Include="widgets\batterycalculator.ui" />
     <QtUic Include="boardsetupwindow.ui" />
+    <QtUic Include="widgets\calibrateanticogging.ui" />
     <QtUic Include="widgets\detectallfocdialog.ui" />
     <QtUic Include="widgets\detectbldc.ui" />
     <QtUic Include="widgets\detectfoc.ui" />

@@ -48,6 +48,7 @@ void PageFoc::setVesc(VescInterface *vesc)
         ui->detectFoc->setVesc(mVesc);
         ui->detectFocHall->setVesc(mVesc);
         ui->detectFocEncoder->setVesc(mVesc);
+        ui->acCalibrate->setVesc(mVesc);
 
         reloadParams();
     }

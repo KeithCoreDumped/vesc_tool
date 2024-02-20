@@ -192,6 +192,9 @@ int main(int argc, char *argv[])
 
     QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
 
+    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
+    QGuiApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
+
 #ifdef HAS_BLUETOOTH
     qmlRegisterType<BleUart>("Vedder.vesc.bleuart", 1, 0, "BleUart");
 #else

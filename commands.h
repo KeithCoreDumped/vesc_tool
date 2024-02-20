@@ -25,6 +25,7 @@
 #include <QMap>
 #include <QVariant>
 #include <QVariantList>
+
 #include "datatypes.h"
 #include "configparams.h"
 
@@ -162,6 +163,10 @@ signals:
     void logConfigField(int fieldInd, LOG_HEADER header);
     void logSamples(int fieldStart, QVector<double> samples);
 
+    void focAnticoggingCalibrationDataReceived(bool finish, bool success, bool forward, int pos_index, double iq);
+    void focAnticoggingCalDataAckReceived(bool res);
+    void focAnticoggingCalDataReadBackReceived(bool valid, VByteArray data);
+
 public slots:
     void processPacket(QByteArray data);
 
@@ -284,6 +289,10 @@ public slots:
     void fileWrite(QString path, qint32 offset, qint32 size, QByteArray data);
     void fileMkdir(QString path);
     void fileRemove(QString path);
+
+    void focAnticoggingCalibrationStart(uint16_t attempt, uint16_t smplppt, double err_abs_threshold, double err_threshold);
+    void focAnticoggingDownloadCalData(ANTICOGGING_BLOCK_TRANSMISSION_STATE state, uint32_t offset, std::ranges::subrange<char*> payload);
+    void focAnticoggingReadBackCalData(ANTICOGGING_BLOCK_TRANSMISSION_STATE state, uint32_t offset, uint32_t len);
 
 private slots:
     void timerSlot();

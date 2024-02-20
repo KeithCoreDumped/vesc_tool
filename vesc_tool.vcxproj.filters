@@ -483,7 +483,10 @@
     <ClCompile Include="widgets\vtextbrowser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="pages\pageanticogging.cpp">
+    <ClCompile Include="widgets\calibrateanticogging.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="fftw3wrapper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -932,6 +935,9 @@
     <QtMoc Include="widgets\vtextbrowser.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="widgets\calibrateanticogging.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="debug\moc_predefs.h.cbt">
@@ -1138,6 +1144,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="widgets\scripteditor.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="widgets\calibrateanticogging.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -2839,5 +2848,10 @@
     <None Include="android\res\values\libs.xml">
       <Filter>Distribution Files</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="fftw3wrapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

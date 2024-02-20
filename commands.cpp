@@ -21,6 +21,7 @@
 #include "qelapsedtimer.h"
 #include <QDebug>
 #include <QEventLoop>
+#include <ranges>
 
 Commands::Commands(QObject *parent) : QObject(parent)
 {
@@ -1112,6 +1113,41 @@ void Commands::processPacket(QByteArray data)
         emit logSamples(fieldStart, samples);
     } break;
 
+    case COMM_DETECT_ANTICOGGING: {
+        bool finish, success, forward;
+        finish = vb.vbPopFrontInt8();
+        success = vb.vbPopFrontInt8();
+        forward = vb.vbPopFrontInt8();
+        int pos_index  = vb.vbPopFrontInt16();
+        double iq = vb.vbPopFrontDouble32Auto();
+        emit focAnticoggingCalibrationDataReceived(finish, success, forward, pos_index, iq);
+    } break;
+    case COMM_WRITE_ANTICOGGING: {
+        uint8_t state = vb.vbPopFrontUint8();
+        bool res = vb.vbPopFrontUint8();
+        if(state == AC_BLOCK_ACK) {
+            emit focAnticoggingCalDataAckReceived(res);
+        }
+        else {
+            qDebug() << "COMM_WRITE_ANTICOGGING: unrecognizable message";
+        }
+    } break;
+    case COMM_READ_ANTICOGGING: {
+        uint8_t status = vb.vbPopFrontUint8();
+        switch(status) {
+        case AC_BLOCK_START:
+        {
+            bool valid_flag = vb.vbPopFrontInt8();
+            emit focAnticoggingCalDataReadBackReceived(valid_flag, {});
+        } break;
+        case AC_BLOCK_ONGOING:
+            emit focAnticoggingCalDataReadBackReceived(true, vb);
+            break;
+        default:
+            qDebug() << "COMM_READ_ANTICOGGING: unrecognizable message";
+            break;
+        }
+    } break;
     default:
         break;
     }
@@ -2260,6 +2296,38 @@ void Commands::fileRemove(QString path)
     VByteArray vb;
     vb.vbAppendUint8(COMM_FILE_REMOVE);
     vb.vbAppendString(path);
+    emitData(vb);
+}
+
+void Commands::focAnticoggingCalibrationStart(uint16_t attempt, uint16_t smplppt, double err_abs_threshold, double err_threshold) {
+    VByteArray vb;
+    vb.vbAppendUint8(COMM_DETECT_ANTICOGGING);
+    vb.vbAppendUint16(attempt);
+    vb.vbAppendUint16(smplppt);
+    vb.vbAppendDouble32Auto(err_abs_threshold);
+    vb.vbAppendDouble32Auto(err_threshold);
+    emitData(vb);
+}
+
+void Commands::focAnticoggingDownloadCalData(ANTICOGGING_BLOCK_TRANSMISSION_STATE state, uint32_t offset, std::ranges::subrange<char*> payload) {
+    VByteArray vb;
+    vb.vbAppendUint8(COMM_WRITE_ANTICOGGING);
+    vb.vbAppendUint8(state);
+    if (state == AC_BLOCK_ONGOING) {
+        vb.vbAppendUint32(offset);
+        std::ranges::copy(payload, std::back_inserter(vb));
+    }
+    emitData(vb);
+}
+
+void Commands::focAnticoggingReadBackCalData(ANTICOGGING_BLOCK_TRANSMISSION_STATE state, uint32_t offset, uint32_t len) {
+    VByteArray vb;
+    vb.vbAppendUint8(COMM_READ_ANTICOGGING);
+    vb.vbAppendUint8(state);
+    if(state == AC_BLOCK_ONGOING) {
+        vb.vbAppendUint32(offset);
+        vb.vbAppendUint32(len);
+    }
     emitData(vb);
 }
 
