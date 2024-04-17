@@ -748,7 +748,7 @@ int main(int argc, char *argv[])
 #ifdef Q_OS_IOS
     SetIosParams();
 #endif
-
+    
     int res = app->exec();
 
 #ifdef USE_MOBILE
